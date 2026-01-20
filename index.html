@@ -2,8 +2,31 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geek'Fun - Launcher Gaming Ultime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Geek'Zone Launcher - Le launcher gaming ultime pour tous tes jeux. Accède aux maps Rocket League Steam Workshop et bien plus !">
+    <meta name="keywords" content="launcher, gaming, rocket league, minecraft, farming simulator, steam workshop, geek zone">
+    <meta name="author" content="Geek'Zone Launcher">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Geek'Zone Launcher - Launcher Gaming Ultime">
+    <meta property="og:description" content="Lance tes jeux depuis un hub gaming ultime. Accède aux maps exclusives Steam Workshop pour Rocket League !">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Geek'Zone Launcher - Launcher Gaming Ultime">
+    <meta property="twitter:description" content="Lance tes jeux depuis un hub gaming ultime. Accède aux maps exclusives Steam Workshop pour Rocket League !">
+    
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Geek'Zone">
+    
+    <!-- Android Chrome -->
+    <meta name="theme-color" content="#FFD700">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <title>Geek'Zone Launcher - Launcher Gaming Ultime</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -648,43 +671,280 @@
             display: flex;
             gap: 20px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
             color: var(--text-white);
-            font-size: 24px;
+            font-size: 18px;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            text-decoration: none;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
 
         .social-links a:hover {
-            color: var(--primary-yellow);
+            color: var(--darker-bg);
+            background: var(--primary-yellow);
+            border-color: var(--primary-yellow);
             transform: translateY(-3px);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Responsive Design - Mobile First */
+        
+        /* Petits écrans mobiles (iPhone SE, etc.) */
+        @media (max-width: 375px) {
+            .logo {
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+
+            nav ul {
+                display: none; /* On affichera un menu burger plus tard si besoin */
+            }
+
             .hero h1 {
-                font-size: 48px;
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+
+            .feature-card,
+            .game-card,
+            .premium-feature {
+                padding: 25px 20px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Mobiles standards (iPhone 12, 13, Android) */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            nav {
+                padding: 20px 0;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+                margin-bottom: 20px;
             }
 
             .hero p {
                 font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .cta-button {
+                padding: 16px 40px;
+                font-size: 16px;
+                width: 100%;
+                text-align: center;
             }
 
             .section-title {
                 font-size: 36px;
+                margin-bottom: 50px;
             }
 
-            nav ul {
-                gap: 20px;
+            .features,
+            .games,
+            .premium,
+            .screenshots,
+            .faq {
+                padding: 80px 0;
+            }
+
+            .features-grid,
+            .games-grid,
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .premium-features {
+                grid-template-columns: 1fr;
+            }
+
+            .premium h2 {
+                font-size: 38px;
+            }
+
+            .premium p {
+                font-size: 18px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero::before {
+                width: 400px;
+                height: 400px;
+                right: -30%;
+            }
+        }
+
+        /* Tablettes en portrait (iPad, etc.) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .logo {
+                font-size: 28px;
             }
 
             nav a {
                 font-size: 14px;
             }
 
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .features-grid,
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .screenshots-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .premium-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .container {
-                padding: 0 20px;
+                padding: 0 30px;
+            }
+        }
+
+        /* Tablettes en paysage et petits ordinateurs */
+        @media (min-width: 1025px) and (max-width: 1280px) {
+            .hero h1 {
+                font-size: 64px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .games-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Grands écrans */
+        @media (min-width: 1920px) {
+            .container {
+                max-width: 1600px;
+            }
+
+            .hero h1 {
+                font-size: 84px;
+            }
+
+            .section-title {
+                font-size: 56px;
+            }
+        }
+
+        /* Support iOS - Amélioration du touch et du scroll */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .cta-button,
+            .feature-card,
+            .game-card,
+            .faq-question {
+                -webkit-tap-highlight-color: rgba(255, 215, 0, 0.2);
+            }
+        }
+
+        /* Menu burger pour mobile */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--primary-yellow);
+            color: var(--primary-yellow);
+            font-size: 24px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: var(--primary-yellow);
+            color: var(--darker-bg);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 76px;
+                left: -100%;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 25px;
+                border-top: 2px solid rgba(255, 215, 0, 0.2);
+                transition: left 0.4s ease;
+                z-index: 99;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav a {
+                font-size: 18px;
+                display: block;
+                padding: 10px 0;
             }
         }
 
@@ -706,7 +966,8 @@
 
     <nav>
         <div class="container">
-            <div class="logo">Geek'Fun</div>
+            <div class="logo">Geek'Zone Launcher</div>
+            <button class="mobile-menu-toggle" aria-label="Menu">☰</button>
             <ul>
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#features">Fonctionnalités</a></li>
@@ -723,13 +984,16 @@
             <div class="hero-content">
                 <h1>
                     Lance tes jeux depuis
-                    <span>Geek'Fun Launcher</span>
+                    <span>Geek'Zone Launcher</span>
                 </h1>
                 <p>
-                    Lance l'app Geek'Fun, ajoute tes jeux et apps, lance-les depuis un hub gaming ultime. 
+                    Lance l'app Geek'Zone, ajoute tes jeux et apps, lance-les depuis un hub gaming ultime. 
                     Accède aux maps exclusives Steam Workshop pour Rocket League et bien plus encore !
                 </p>
-                <a href="#" class="cta-button">📥 Télécharger Maintenant</a>
+                <a href="#" class="cta-button" id="downloadBtn">📥 Télécharger Maintenant</a>
+                <p style="margin-top: 15px; font-size: 14px; color: var(--text-gray);">
+                    <span id="osDetect">Détection automatique de votre système...</span>
+                </p>
             </div>
         </div>
     </section>
@@ -746,7 +1010,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">📱</div>
                     <h3>Overlay In-Game</h3>
-                    <p>Accède au menu Geek'Fun Launcher directement pendant tes sessions de jeu avec le mode Premium.</p>
+                    <p>Accède au menu Geek'Zone Launcher directement pendant tes sessions de jeu avec le mode Premium.</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🎮</div>
@@ -756,7 +1020,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🔒</div>
                     <h3>Sécurité & Confidentialité</h3>
-                    <p>Geek'Fun Launcher sécurise tes données et respecte ta vie privée.</p>
+                    <p>Geek'Zone Launcher sécurise tes données et respecte ta vie privée.</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🗺️</div>
@@ -859,9 +1123,40 @@
     <section id="faq" class="faq">
         <div class="container">
             <h2 class="section-title">FAQ</h2>
+            
+            <!-- Section Discord CTA -->
+            <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%); 
+                        border: 2px solid var(--primary-yellow); 
+                        padding: 40px; 
+                        margin-bottom: 60px; 
+                        text-align: center;">
+                <h3 style="font-family: 'Orbitron', sans-serif; 
+                           font-size: 28px; 
+                           color: var(--primary-yellow); 
+                           margin-bottom: 15px;
+                           text-transform: uppercase;">
+                    💬 Rejoins notre communauté Discord
+                </h3>
+                <p style="color: var(--text-gray); 
+                          font-size: 18px; 
+                          margin-bottom: 25px; 
+                          max-width: 700px; 
+                          margin-left: auto; 
+                          margin-right: auto;">
+                    Suis le développement en temps réel, propose tes idées, obtiens de l'aide et discute avec la communauté !
+                </p>
+                <a href="https://discord.gg/XUzakkECJF" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="cta-button" 
+                   style="display: inline-block;">
+                    💬 Rejoindre le Discord
+                </a>
+            </div>
+            
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question">Comment installer Geek'Fun Launcher ?</div>
+                    <div class="faq-question">Comment installer Geek'Zone Launcher ?</div>
                     <div class="faq-answer">
                         <p>Télécharge le launcher depuis notre site officiel, exécute le fichier d'installation et suis les instructions. L'installation prend moins de 2 minutes.</p>
                     </div>
@@ -869,7 +1164,7 @@
                 <div class="faq-item">
                     <div class="faq-question">Puis-je utiliser mes jeux Steam et Epic Games ?</div>
                     <div class="faq-answer">
-                        <p>Absolument ! Geek'Fun Launcher est compatible avec tous les jeux que tu possèdes légalement, quelle que soit la plateforme d'origine.</p>
+                        <p>Absolument ! Geek'Zone Launcher est compatible avec tous les jeux que tu possèdes légalement, quelle que soit la plateforme d'origine.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -887,7 +1182,7 @@
                 <div class="faq-item">
                     <div class="faq-question">Le launcher ralentit-il mes jeux ?</div>
                     <div class="faq-answer">
-                        <p>Non ! Geek'Fun Launcher est optimisé pour être ultra-léger et n'impacte pas les performances de tes jeux.</p>
+                        <p>Non ! Geek'Zone Launcher est optimisé pour être ultra-léger et n'impacte pas les performances de tes jeux.</p>
                     </div>
                 </div>
             </div>
@@ -898,12 +1193,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Geek'Fun</h3>
+                    <h3>Geek'Zone</h3>
                     <p style="color: var(--text-gray);">Le launcher gaming ultime pour tous tes jeux et applications.</p>
                     <div class="social-links">
-                        <a href="#">📱</a>
-                        <a href="#">🎮</a>
-                        <a href="#">💬</a>
+                        <a href="https://discord.gg/XUzakkECJF" target="_blank" rel="noopener noreferrer" title="Rejoindre notre Discord">💬 Discord</a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -916,12 +1209,12 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Support</h3>
+                    <h3>Communauté</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Discord</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Signaler un Bug</a></li>
+                        <li><a href="https://discord.gg/XUzakkECJF" target="_blank" rel="noopener noreferrer">💬 Discord</a></li>
+                        <li><a href="https://discord.gg/XUzakkECJF" target="_blank" rel="noopener noreferrer">Suivre le développement</a></li>
+                        <li><a href="https://discord.gg/XUzakkECJF" target="_blank" rel="noopener noreferrer">Proposer des idées</a></li>
+                        <li><a href="https://discord.gg/XUzakkECJF" target="_blank" rel="noopener noreferrer">Support communautaire</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -934,16 +1227,106 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Geek'Fun Launcher. Tous droits réservés.</p>
+                <p>&copy; 2026 Geek'Zone Launcher. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Menu Mobile Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+            });
+        });
+
+        // Détection automatique de l'OS
+        function detectOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const platform = window.navigator.platform.toLowerCase();
+            
+            if (/iphone|ipad|ipod/.test(userAgent)) {
+                return 'iOS';
+            } else if (/android/.test(userAgent)) {
+                return 'Android';
+            } else if (/mac/.test(platform)) {
+                return 'macOS';
+            } else if (/win/.test(platform)) {
+                return 'Windows';
+            } else if (/linux/.test(platform)) {
+                return 'Linux';
+            }
+            return 'Unknown';
+        }
+
+        // Configuration des liens de téléchargement
+        const downloadLinks = {
+            'Windows': 'https://votre-site.com/downloads/GeekZone-Launcher-Windows.exe',
+            'macOS': 'https://votre-site.com/downloads/GeekZone-Launcher-macOS.dmg',
+            'Linux': 'https://votre-site.com/downloads/GeekZone-Launcher-Linux.AppImage',
+            'iOS': 'https://apps.apple.com/app/geekzone-launcher',
+            'Android': 'https://play.google.com/store/apps/details?id=com.geekzone.launcher',
+            'Unknown': 'https://votre-site.com/downloads'
+        };
+
+        // Textes personnalisés selon l'OS
+        const osMessages = {
+            'Windows': 'Version pour Windows détectée',
+            'macOS': 'Version pour macOS détectée',
+            'Linux': 'Version pour Linux détectée',
+            'iOS': 'Télécharger sur l\'App Store',
+            'Android': 'Télécharger sur Google Play',
+            'Unknown': 'Choisir votre version'
+        };
+
+        // Initialisation
+        const userOS = detectOS();
+        const downloadBtn = document.getElementById('downloadBtn');
+        const osDetect = document.getElementById('osDetect');
+
+        // Mettre à jour le texte et le lien
+        osDetect.textContent = osMessages[userOS];
+        downloadBtn.href = downloadLinks[userOS];
+
+        // Événement de téléchargement
+        downloadBtn.addEventListener('click', function(e) {
+            // Pour l'instant, on affiche une alerte car vous n'avez pas encore uploadé les fichiers
+            e.preventDefault();
+            
+            alert(`🎮 Téléchargement pour ${userOS}\n\n` +
+                  `Le launcher Geek'Zone sera bientôt disponible !\n\n` +
+                  `En attendant, rejoignez notre Discord pour suivre le développement :\n` +
+                  `https://discord.gg/XUzakkECJF`);
+            
+            // Rediriger vers Discord
+            window.open('https://discord.gg/XUzakkECJF', '_blank');
+            
+            // Quand vous aurez les fichiers, décommentez cette ligne et supprimez l'alert:
+            // window.location.href = downloadLinks[userOS];
+        });
+
         // FAQ Toggle
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const faqItem = question.parentElement;
+                
+                // Fermer les autres items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+                
                 faqItem.classList.toggle('active');
             });
         });
