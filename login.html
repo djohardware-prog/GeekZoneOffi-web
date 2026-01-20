@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Geek'Zone Launcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-yellow: #FFD700;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+            --accent-glow: rgba(255, 215, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 1;
+            background: var(--darker-bg);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            padding: 50px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            text-align: center;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .logo::before {
+            content: '▶';
+            margin-right: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            background: transparent;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            color: var(--text-gray);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: var(--primary-yellow);
+            color: var(--darker-bg);
+            border-color: var(--primary-yellow);
+        }
+
+        .tab:hover:not(.active) {
+            border-color: var(--primary-yellow);
+            color: var(--primary-yellow);
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            background: var(--dark-bg);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            color: var(--text-white);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .password-toggle {
+            position: relative;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            cursor: pointer;
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        .toggle-btn:hover {
+            color: var(--primary-yellow);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary-yellow);
+            color: var(--darker-bg);
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .error-message,
+        .success-message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message {
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid rgba(255, 0, 0, 0.5);
+            color: #ff4444;
+        }
+
+        .success-message {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid rgba(0, 255, 0, 0.5);
+            color: #44ff44;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            color: var(--text-gray);
+            text-decoration: none;
+            margin-top: 30px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-yellow);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: var(--primary-yellow);
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <div class="login-container">
+        <div class="logo">Geek'Zone</div>
+        <p class="subtitle">Ton hub gaming ultime</p>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="login">Connexion</button>
+            <button class="tab" data-tab="signup">Inscription</button>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+
+        <!-- Formulaire de connexion -->
+        <form id="loginForm" class="form-container active">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" required placeholder="ton@email.com">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Mot de passe</label>
+                <div class="password-toggle">
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                    <button type="button" class="toggle-btn" onclick="togglePassword('loginPassword')">👁️</button>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Se connecter</button>
+        </form>
+
+        <!-- Formulaire d'inscription -->
+        <form id="signupForm" class="form-container">
+            <div class="form-group">
+                <label for="signupName">Nom d'utilisateur</label>
+                <input type="text" id="signupName" required placeholder="TonPseudo">
+            </div>
+            <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <input type="email" id="signupEmail" required placeholder="ton@email.com">
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Mot de passe</label>
+                <div class="password-toggle">
+                    <input type="password" id="signupPassword" required placeholder="••••••••" minlength="6">
+                    <button type="button" class="toggle-btn" onclick="togglePassword('signupPassword')">👁️</button>
+                </div>
+                <small style="color: var(--text-gray); font-size: 12px; display: block; margin-top: 5px;">
+                    Minimum 6 caractères
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="signupPasswordConfirm">Confirmer le mot de passe</label>
+                <div class="password-toggle">
+                    <input type="password" id="signupPasswordConfirm" required placeholder="••••••••">
+                    <button type="button" class="toggle-btn" onclick="togglePassword('signupPasswordConfirm')">👁️</button>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Créer mon compte</button>
+        </form>
+
+        <div class="loading" id="loading">Chargement</div>
+
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+        // ==========================================
+        // CONFIGURATION FIREBASE
+        // ==========================================
+        // ⚠️ REMPLACEZ CES VALEURS PAR VOS PROPRES CLÉS FIREBASE
+        const firebaseConfig = {
+            apiKey: "VOTRE_API_KEY",
+            authDomain: "VOTRE_PROJECT_ID.firebaseapp.com",
+            projectId: "VOTRE_PROJECT_ID",
+            storageBucket: "VOTRE_PROJECT_ID.appspot.com",
+            messagingSenderId: "VOTRE_SENDER_ID",
+            appId: "VOTRE_APP_ID"
+        };
+
+        // Initialiser Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // ==========================================
+        // CONFIGURATION EMAILJS
+        // ==========================================
+        // ⚠️ REMPLACEZ PAR VOTRE PUBLIC KEY EMAILJS
+        emailjs.init("VOTRE_PUBLIC_KEY_EMAILJS");
+
+        // ==========================================
+        // GESTION DES ONGLETS
+        // ==========================================
+        const tabs = document.querySelectorAll('.tab');
+        const forms = document.querySelectorAll('.form-container');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(f => f.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(targetTab + 'Form').classList.add('active');
+                
+                hideMessages();
+            });
+        });
+
+        // ==========================================
+        // FONCTION TOGGLE PASSWORD
+        // ==========================================
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        // ==========================================
+        // MESSAGES D'ERREUR/SUCCÈS
+        // ==========================================
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => errorDiv.style.display = 'none', 5000);
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            setTimeout(() => successDiv.style.display = 'none', 5000);
+        }
+
+        function hideMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        // ==========================================
+        // ENVOI EMAIL AVEC EMAILJS
+        // ==========================================
+        async function sendWelcomeEmail(email, name) {
+            try {
+                const templateParams = {
+                    to_email: email,
+                    to_name: name,
+                    message: `Bienvenue sur Geek'Zone Launcher ! Ton compte a été créé avec succès.`
+                };
+
+                await emailjs.send(
+                    'VOTRE_SERVICE_ID',  // ⚠️ Remplacez par votre Service ID
+                    'VOTRE_TEMPLATE_ID', // ⚠️ Remplacez par votre Template ID
+                    templateParams
+                );
+                
+                console.log('Email de bienvenue envoyé avec succès');
+            } catch (error) {
+                console.error('Erreur envoi email:', error);
+            }
+        }
+
+        // ==========================================
+        // INSCRIPTION
+        // ==========================================
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMessages();
+            
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupPasswordConfirm').value;
+
+            // Validation
+            if (password !== confirmPassword) {
+                showError('Les mots de passe ne correspondent pas');
+                return;
+            }
+
+            if (password.length < 6) {
+                showError('Le mot de passe doit contenir au moins 6 caractères');
+                return;
+            }
+
+            showLoading(true);
+
+            try {
+                // Vérifier si l'email existe déjà
+                const methods = await auth.fetchSignInMethodsForEmail(email);
+                if (methods.length > 0) {
+                    showError('Cet email est déjà utilisé');
+                    showLoading(false);
+                    return;
+                }
+
+                // Créer le compte Firebase
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+
+                // Mettre à jour le profil
+                await user.updateProfile({
+                    displayName: name
+                });
+
+                // Sauvegarder les infos dans Firestore
+                await db.collection('users').doc(user.uid).set({
+                    name: name,
+                    email: email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Envoyer l'email de bienvenue
+                await sendWelcomeEmail(email, name);
+
+                showSuccess('✅ Compte créé avec succès ! Email de confirmation envoyé.');
+                
+                // Redirection vers le profil après 2 secondes
+                setTimeout(() => {
+                    window.location.href = 'profile.html';
+                }, 2000);
+
+            } catch (error) {
+                console.error('Erreur inscription:', error);
+                let errorMessage = 'Une erreur est survenue';
+                
+                switch (error.code) {
+                    case 'auth/email-already-in-use':
+                        errorMessage = 'Cet email est déjà utilisé';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'Email invalide';
+                        break;
+                    case 'auth/weak-password':
+                        errorMessage = 'Mot de passe trop faible';
+                        break;
+                }
+                
+                showError(errorMessage);
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        // ==========================================
+        // CONNEXION
+        // ==========================================
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMessages();
+            
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            showLoading(true);
+
+            try {
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                
+                // Mettre à jour la date de dernière connexion
+                await db.collection('users').doc(userCredential.user.uid).update({
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                showSuccess('✅ Connexion réussie !');
+                
+                // Redirection vers le profil
+                setTimeout(() => {
+                    window.location.href = 'profile.html';
+                }, 1000);
+
+            } catch (error) {
+                console.error('Erreur connexion:', error);
+                let errorMessage = 'Erreur de connexion';
+                
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                    case 'auth/wrong-password':
+                        errorMessage = 'Email ou mot de passe incorrect';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'Email invalide';
+                        break;
+                }
+                
+                showError(errorMessage);
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        // ==========================================
+        // VÉRIFICATION SESSION AU CHARGEMENT
+        // ==========================================
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // L'utilisateur est déjà connecté, rediriger vers profil
+                // Décommentez si vous voulez une redirection automatique
+                // window.location.href = 'profile.html';
+            }
+        });
+    </script>
+</body>
+</html>
