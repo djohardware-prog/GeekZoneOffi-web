@@ -356,12 +356,12 @@
         // ==========================================
         // ⚠️ REMPLACEZ CES VALEURS PAR VOS PROPRES CLÉS FIREBASE
         const firebaseConfig = {
-            apiKey: "VOTRE_API_KEY",
-            authDomain: "VOTRE_PROJECT_ID.firebaseapp.com",
-            projectId: "VOTRE_PROJECT_ID",
-            storageBucket: "VOTRE_PROJECT_ID.appspot.com",
-            messagingSenderId: "VOTRE_SENDER_ID",
-            appId: "VOTRE_APP_ID"
+            apiKey: "AIzaSyDZe7Pz24bvL_K0KVzaDg5zTCKSUilfqeE",
+            authDomain: "geekzone-launcher.firebaseapp.com",
+            projectId: "geekzone-launcher",
+            storageBucket: "geekzone-launcher.firebasestorage.app",
+            messagingSenderId: "724224317677",
+            appId: "1:724224317677:web:e8fada43d4519498a94e4"
         };
 
         // Initialiser Firebase
@@ -503,10 +503,10 @@
                     lastLogin: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
-                // Envoyer l'email de bienvenue
-                await sendWelcomeEmail(email, name);
+                // Envoyer l'email de bienvenue (DÉSACTIVÉ TEMPORAIREMENT)
+                // await sendWelcomeEmail(email, name);
 
-                showSuccess('✅ Compte créé avec succès ! Email de confirmation envoyé.');
+                showSuccess('✅ Compte créé avec succès !');
                 
                 // Redirection vers le profil après 2 secondes
                 setTimeout(() => {
