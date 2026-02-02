@@ -1,8 +1,8 @@
 {
   "version": "0.12.0",
   "versionName": "v0.12.0 BETA FERMÉE",
-  "downloadUrl": "https://github.com/djohardware-prog/GeekZoneOffi-web/releases/download/v0.12.0-beta/GeekZoneLauncher_Setup.exe",
-  "changelog": "🎮 Version 0.12.0 BETA FERMÉE\n\n• Fix menus fond blanc\n• ChatWindow redesigné avec emojis\n• Système de sons\n• Fix SocialWindow passe derrière\n• Fix switch profil\n• Icônes navigation vectorielles\n• Avatars Premium",
+  "downloadUrl": "https://github.com/djohardware-prog/GeekZoneOffi-web/releases/download/v0.12.0-beta/GeekZoneLauncher_v0.12.0.exe",
+  "changelog": "🎮 Version 0.12.0 BETA FERMÉE\n\n• Fix menus fond blanc\n• ChatWindow redesigné\n• Système de sons\n• Fix SocialWindow\n• Icônes vectorielles\n• Avatars Premium",
   "mandatory": false,
   "minVersion": "0.1.0"
 }
