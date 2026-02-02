@@ -1,8 +1,8 @@
 {
-  "version": "0.11.0",
-  "versionName": "v0.11.0 BETA FERMÉE",
-  "downloadUrl": "https://github.com/djohardware-prog/GeekZoneOffi-web/releases/download/v0.11.0-beta/GeekZoneLauncher_Setup.exe",
-  "changelog": "🎮 Version 0.11.0 BETA FERMÉE\n\n• Système social complet\n• Chat en temps réel\n• Profil avec bio et pays\n• Succès et badges\n• Système de mise à jour automatique\n• Corrections de bugs\n• Améliorations de performance",
-  "mandatory": true,
+  "version": "0.12.0",
+  "versionName": "v0.12.0 BETA FERMÉE",
+  "downloadUrl": "https://github.com/djohardware-prog/GeekZoneOffi-web/releases/download/v0.12.0-beta/GeekZoneLauncher_Setup.exe",
+  "changelog": "🎮 Version 0.12.0 BETA FERMÉE\n\n• Fix menus fond blanc\n• ChatWindow redesigné avec emojis\n• Système de sons\n• Fix SocialWindow passe derrière\n• Fix switch profil\n• Icônes navigation vectorielles\n• Avatars Premium",
+  "mandatory": false,
   "minVersion": "0.1.0"
 }
